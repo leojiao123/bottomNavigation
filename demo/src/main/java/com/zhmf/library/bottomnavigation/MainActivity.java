@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         bottom_navigation_bar = findViewById(R.id.bottom_navigation_bar);
 
 
+
         BottomNavigationItem item1 = new BottomNavigationItem()
                 .setIconActiveDrawable(getResources().getDrawable(R.mipmap.tab_home_selected))
                 .setIconInactiveDrawable(getResources().getDrawable(R.mipmap.tab_home))
