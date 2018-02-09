@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhmf.library.bottomnavigation">
 
-    <application android:supportsRtl="true" />
+    <application />
+
 </manifest>
