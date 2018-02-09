@@ -117,7 +117,9 @@ public class BottomNavigationTab extends FrameLayout {
 
     public void setBadgeIcon(Drawable badgeIcon) {
         this.mBadgeIcon = badgeIcon;
-        iv_badge.setImageDrawable(badgeIcon);
+        if (badgeIcon != null) {
+            iv_badge.setImageDrawable(badgeIcon);
+        }
     }
 
     /*
@@ -161,7 +163,7 @@ public class BottomNavigationTab extends FrameLayout {
         }
 
         ViewGroup.LayoutParams layoutParams = iv_icon.getLayoutParams();
-        layoutParams.width = Utils.dp2px(getContext(), iconWidth);
+        layoutParams.width = Utils.dp2px(getContext(), iconWidth + 5);
         layoutParams.height = Utils.dp2px(getContext(), iconWidth);
         iv_icon.setLayoutParams(layoutParams);
 

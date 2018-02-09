@@ -225,4 +225,12 @@ public class BottomNavigationBar extends FrameLayout {
         return this;
     }
 
+    public void selectTab(int newPosition) {
+        selectTab(newPosition, true);
+    }
+
+    public void selectTab(int newPosition, boolean callListener) {
+        selectTabInternal(newPosition, false, callListener, callListener);
+    }
+
 }
