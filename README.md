@@ -26,7 +26,7 @@
 #### 2.添加Gradle依赖
 
 	dependencies {
-	        compile 'com.github.leojiao123:bottomNavigation:v1.0.2'
+	        compile 'com.github.leojiao123:bottomNavigation:1.0.1'
 	}
 
 #### 3.布局中添加
@@ -77,6 +77,8 @@
         bottom_navigation_bar.initialise(); // 开始绘制并显示
 
 
+
+
 > 设置点击事件
 
 	  bottom_navigation_bar.setTabSelectedListener(new OnTabSelectedListener() {
@@ -95,3 +97,15 @@
                 Log.i("当前再次选中", String.valueOf(position));
             }
         });
+
+> 新增api
+		
+	
+	 bottom_navigation_bar.setMenuHeight(90); // 设置底部menu 的高度 
+ 	 bottom_navigation_bar.setViewLineVisible(true); // 设置默认的线显示与否
+	 以上2个方法在initialise之前调用
+
+	 bottom_navigation_bar.setBadgeVisible(0, true); // 设置某个位置的badge 显示或隐藏
+     bottom_navigation_bar.setBadgeMargin(0, 15); //  设置badge 左右间距（不可过大）
+	 以上2个方法在initialise之后调用
+ 
