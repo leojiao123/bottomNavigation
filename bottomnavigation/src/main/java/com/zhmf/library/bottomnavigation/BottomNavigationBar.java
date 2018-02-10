@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -18,9 +19,6 @@ import java.util.ArrayList;
 
 public class BottomNavigationBar extends FrameLayout {
 
-
-    private LinearLayout mTabContainer; // 底部布局的container
-
     ArrayList<BottomNavigationTab> mBottomNavigationTabs = new ArrayList<>();
     ArrayList<BottomNavigationItem> mBottomNavigationItems = new ArrayList<>();
 
@@ -29,6 +27,13 @@ public class BottomNavigationBar extends FrameLayout {
     private int mSelectedPosition = DEFAULT_SELECTED_POSITION; // 当前选择位置
 
     private OnTabSelectedListener mTabSelectedListener;
+
+    private LinearLayout mTabContainer; // 底部布局的container
+
+    private ImageView iv_line;
+    private View view_empty_content;
+    private boolean showLine = true;
+    private int heightDp = 55;
 
     public BottomNavigationBar(Context context) {
         this(context, null);
@@ -57,6 +62,9 @@ public class BottomNavigationBar extends FrameLayout {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View parentView = inflater.inflate(R.layout.bottom_navigation_bar_container, this, true);
         mTabContainer = (LinearLayout) parentView.findViewById(R.id.bottom_navigation_bar_item_container);
+        mTabContainer = (LinearLayout) parentView.findViewById(R.id.bottom_navigation_bar_item_container);
+        view_empty_content = (View) parentView.findViewById(R.id.view_empty_content);
+        iv_line = (ImageView) parentView.findViewById(R.id.iv_line);
         setClipToPadding(false); // 设置滚动区域是否包含padding
     }
 
@@ -80,7 +88,6 @@ public class BottomNavigationBar extends FrameLayout {
 
             int screenWidth = Utils.getScreenWidth(getContext());
             int itemWidth = screenWidth / mBottomNavigationItems.size();
-
             /*
             * 创建tab
             * */
@@ -99,6 +106,19 @@ public class BottomNavigationBar extends FrameLayout {
             } else if (!mBottomNavigationTabs.isEmpty()) {
                 selectTabInternal(0, true, false, false);
             }
+
+            /*
+            * 设置viewLine 显示与否
+            * */
+            iv_line.setVisibility(showLine ? VISIBLE : GONE);
+
+            /*
+            * 设置高度
+            * */
+            ViewGroup.LayoutParams layoutParams = view_empty_content.getLayoutParams();
+            layoutParams.width = Utils.getScreenWidth(getContext());
+            layoutParams.height = Utils.dp2px(getContext(), heightDp);
+            view_empty_content.setLayoutParams(layoutParams);
 
 
         }
@@ -232,5 +252,28 @@ public class BottomNavigationBar extends FrameLayout {
     public void selectTab(int newPosition, boolean callListener) {
         selectTabInternal(newPosition, false, callListener, callListener);
     }
+
+    public void setViewLineVisible(boolean show) {
+        this.showLine = show;
+    }
+
+
+
+    public void setMenuHeight(int heightInDp) {
+        this.heightDp = heightInDp;
+    }
+
+    public void setBadgeVisible(int position, boolean visible) {
+        if (position >= 0 && position < mBottomNavigationTabs.size()) {
+            mBottomNavigationTabs.get(position).setBadgeVisible(visible);
+        }
+    }
+
+    public void setBadgeMargin(int position, int marginInDp) {
+        if (position >= 0 && position < mBottomNavigationTabs.size()) {
+            mBottomNavigationTabs.get(position).setBadgeMargin(marginInDp);
+        }
+    }
+
 
 }

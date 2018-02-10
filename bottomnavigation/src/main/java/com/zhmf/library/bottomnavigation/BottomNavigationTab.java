@@ -73,6 +73,7 @@ public class BottomNavigationTab extends FrameLayout {
         iv_icon = (ImageView) view.findViewById(R.id.bottom_navigation_icon);
         iv_badge = (ImageView) view.findViewById(R.id.bottom_navigation_badge_icon);
         tv_title = (TextView) view.findViewById(R.id.bottom_navigation_title);
+
     }
 
 
@@ -112,6 +113,10 @@ public class BottomNavigationTab extends FrameLayout {
     public int getPosition() {
 
         return mPosition;
+    }
+
+    public void setBadgeVisible(boolean visible) {
+        iv_badge.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
     }
 
 
@@ -200,4 +205,9 @@ public class BottomNavigationTab extends FrameLayout {
     }
 
 
+    public void setBadgeMargin(int marginInDp) {
+        FrameLayout.LayoutParams layoutParams = (LayoutParams) iv_icon.getLayoutParams();
+        layoutParams.setMargins(Utils.dp2px(getContext(), marginInDp), 0, Utils.dp2px(getContext(), marginInDp), 0);
+        iv_icon.setLayoutParams(layoutParams);
+    }
 }
