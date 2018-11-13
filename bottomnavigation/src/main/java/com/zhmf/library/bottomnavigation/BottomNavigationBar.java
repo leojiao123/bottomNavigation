@@ -270,9 +270,15 @@ public class BottomNavigationBar extends FrameLayout {
         }
     }
 
-    public void setBadgeMargin(int position, int marginInDpLeft, int marginInDpRight,int marginInDpTop,int marginInDpBot) {
+    public void setBadgeText(int position, String badge) {
         if (position >= 0 && position < mBottomNavigationTabs.size()) {
-            mBottomNavigationTabs.get(position).setBadgeMargin(marginInDpLeft,marginInDpRight,marginInDpTop,marginInDpBot);
+            mBottomNavigationTabs.get(position).setBadgeText(badge);
+        }
+    }
+
+    public void setBadgeMargin(int position, int marginInDpLeft, int marginInDpRight, int marginInDpTop, int marginInDpBot) {
+        if (position >= 0 && position < mBottomNavigationTabs.size()) {
+            mBottomNavigationTabs.get(position).setBadgeMargin(marginInDpLeft, marginInDpRight, marginInDpTop, marginInDpBot);
         }
     }
 
