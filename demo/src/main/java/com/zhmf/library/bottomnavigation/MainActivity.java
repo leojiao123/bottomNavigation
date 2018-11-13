@@ -24,6 +24,8 @@ public class MainActivity extends Activity {
                 .setLabelActiveColor(Color.parseColor("#FF0000"))
                 .setBadgeDrawable(getResources().getDrawable(R.drawable.red_point))
                 .setTitle("首页")
+
+                .setBadgeMessage("99+")
                 .setIconWidth(25);
 
         BottomNavigationItem item2 = new BottomNavigationItem()
@@ -65,7 +67,7 @@ public class MainActivity extends Activity {
         bottom_navigation_bar.initialise();
 
         bottom_navigation_bar.setBadgeVisible(0, true);
-        bottom_navigation_bar.setBadgeMargin(0, 15); // 自行调整至合适状态
+        bottom_navigation_bar.setBadgeMargin(0, 10,10,10,0); // 自行调整至合适状态
 
 
         // 需要在初始化完成之后调用

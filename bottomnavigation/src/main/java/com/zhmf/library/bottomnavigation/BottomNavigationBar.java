@@ -55,8 +55,8 @@ public class BottomNavigationBar extends FrameLayout {
     }
 
     /*
-    * 初始化
-    * */
+     * 初始化
+     * */
     private void init() {
         setLayoutParams(new ViewGroup.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)));
         LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -75,9 +75,9 @@ public class BottomNavigationBar extends FrameLayout {
 
 
     /*
-    *  在所有的配置文件完成之后调用
-    *  调用此方法会重汇tab
-    * */
+     *  在所有的配置文件完成之后调用
+     *  调用此方法会重汇tab
+     * */
 
     public void initialise() {
 
@@ -89,8 +89,8 @@ public class BottomNavigationBar extends FrameLayout {
             int screenWidth = Utils.getScreenWidth(getContext());
             int itemWidth = screenWidth / mBottomNavigationItems.size();
             /*
-            * 创建tab
-            * */
+             * 创建tab
+             * */
 
             for (BottomNavigationItem currentItem : mBottomNavigationItems) {
                 BottomNavigationTab bottomNavigationTab = new BottomNavigationTab(getContext());
@@ -98,8 +98,8 @@ public class BottomNavigationBar extends FrameLayout {
             }
 
             /*
-            * 处理点击事件
-            * */
+             * 处理点击事件
+             * */
 
             if (mBottomNavigationTabs.size() > mFirstSelectedPosition) {
                 selectTabInternal(mFirstSelectedPosition, true, false, false);
@@ -108,13 +108,13 @@ public class BottomNavigationBar extends FrameLayout {
             }
 
             /*
-            * 设置viewLine 显示与否
-            * */
+             * 设置viewLine 显示与否
+             * */
             iv_line.setVisibility(showLine ? VISIBLE : GONE);
 
             /*
-            * 设置高度
-            * */
+             * 设置高度
+             * */
             ViewGroup.LayoutParams layoutParams = view_empty_content.getLayoutParams();
             layoutParams.width = Utils.getScreenWidth(getContext());
             layoutParams.height = Utils.dp2px(getContext(), heightDp);
@@ -151,6 +151,8 @@ public class BottomNavigationBar extends FrameLayout {
         bottomNavigationTab.setInactiveColor(currentItem.getLabelInActiveColor());
 
         bottomNavigationTab.setBadgeIcon(currentItem.getBadgeDrawable());
+
+        bottomNavigationTab.setBadgeText(currentItem.getBadgeMessage());
 
         bottomNavigationTab.setItemWith(itemWidth);
 
@@ -214,8 +216,8 @@ public class BottomNavigationBar extends FrameLayout {
     }
 
     /*
-    * 清空状态
-    * */
+     * 清空状态
+     * */
     public void clearAll() {
         mTabContainer.removeAllViews();
         mBottomNavigationTabs.clear();
@@ -258,7 +260,6 @@ public class BottomNavigationBar extends FrameLayout {
     }
 
 
-
     public void setMenuHeight(int heightInDp) {
         this.heightDp = heightInDp;
     }
@@ -269,9 +270,9 @@ public class BottomNavigationBar extends FrameLayout {
         }
     }
 
-    public void setBadgeMargin(int position, int marginInDp) {
+    public void setBadgeMargin(int position, int marginInDpLeft, int marginInDpRight,int marginInDpTop,int marginInDpBot) {
         if (position >= 0 && position < mBottomNavigationTabs.size()) {
-            mBottomNavigationTabs.get(position).setBadgeMargin(marginInDp);
+            mBottomNavigationTabs.get(position).setBadgeMargin(marginInDpLeft,marginInDpRight,marginInDpTop,marginInDpBot);
         }
     }
 

@@ -10,6 +10,7 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.graphics.drawable.DrawableCompat;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class BottomNavigationTab extends FrameLayout {
 
     private LinearLayout mContainerView;
     private TextView tv_title;
-    private ImageView iv_badge;
+    private TextView tv_badge;
     private ImageView iv_icon;
 
     private String title;
@@ -38,11 +39,13 @@ public class BottomNavigationTab extends FrameLayout {
     private Drawable mCompactIcon;
     private Drawable mCompactInActiveIcon;
     private Drawable mBadgeIcon;
+    private String mBadgeMsg;
     private boolean isActive = false;
+    private FrameLayout fl_content;
+
     private boolean isInActiveIconSet = false;
     private int itemWidth = -1;
     private int iconWidth = 25;
-
 
     public BottomNavigationTab(@NonNull Context context) {
         this(context, null);
@@ -71,7 +74,8 @@ public class BottomNavigationTab extends FrameLayout {
         View view = inflater.inflate(R.layout.bottom_navigation_item, this, true);
         mContainerView = (LinearLayout) view.findViewById(R.id.ll_bottom_navigation_item_container);
         iv_icon = (ImageView) view.findViewById(R.id.bottom_navigation_icon);
-        iv_badge = (ImageView) view.findViewById(R.id.bottom_navigation_badge_icon);
+        tv_badge = (TextView) view.findViewById(R.id.bottom_navigation_badge_text_view);
+        fl_content = (FrameLayout) view.findViewById(R.id.fl_content);
         tv_title = (TextView) view.findViewById(R.id.bottom_navigation_title);
 
     }
@@ -83,15 +87,15 @@ public class BottomNavigationTab extends FrameLayout {
     }
 
     /*
-    * 设置激活状态颜色
-    * */
+     * 设置激活状态颜色
+     * */
     public void setActiveColor(int activeColor) {
         mActiveColor = activeColor;
     }
 
     /*
-    * 设置normal 颜色
-    * */
+     * 设置normal 颜色
+     * */
     public void setInactiveColor(int inActiveColor) {
         mInActiveColor = inActiveColor;
         tv_title.setTextColor(inActiveColor);
@@ -116,20 +120,28 @@ public class BottomNavigationTab extends FrameLayout {
     }
 
     public void setBadgeVisible(boolean visible) {
-        iv_badge.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
+        tv_badge.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
     }
 
 
     public void setBadgeIcon(Drawable badgeIcon) {
         this.mBadgeIcon = badgeIcon;
         if (badgeIcon != null) {
-            iv_badge.setImageDrawable(badgeIcon);
+            tv_badge.setBackgroundDrawable(badgeIcon);
+        }
+    }
+
+
+    public void setBadgeText(String string) {
+        this.mBadgeMsg = string;
+        if (!TextUtils.isEmpty(string)) {
+            tv_badge.setText(mBadgeMsg);
         }
     }
 
     /*
-    * 选中状态
-    * */
+     * 选中状态
+     * */
     public void select(boolean setActiveColor) {
         isActive = true;
         iv_icon.setSelected(true);
@@ -142,8 +154,8 @@ public class BottomNavigationTab extends FrameLayout {
     }
 
     /*
-    * 未选中状态
-    * */
+     * 未选中状态
+     * */
     public void unSelect(boolean setActiveColor) {
         isActive = false;
         tv_title.setTextColor(mInActiveColor);
@@ -168,9 +180,10 @@ public class BottomNavigationTab extends FrameLayout {
         }
 
         ViewGroup.LayoutParams layoutParams = iv_icon.getLayoutParams();
-        layoutParams.width = Utils.dp2px(getContext(), iconWidth + 5);
+        layoutParams.width = Utils.dp2px(getContext(), iconWidth);
         layoutParams.height = Utils.dp2px(getContext(), iconWidth);
         iv_icon.setLayoutParams(layoutParams);
+
 
         iv_icon.setSelected(false); // 初始化未选中
         if (isInActiveIconSet) {
@@ -205,9 +218,9 @@ public class BottomNavigationTab extends FrameLayout {
     }
 
 
-    public void setBadgeMargin(int marginInDp) {
+    public void setBadgeMargin( int marginInDpLeft, int marginInDpRight,int marginInDpTop,int marginInDpBot) {
         FrameLayout.LayoutParams layoutParams = (LayoutParams) iv_icon.getLayoutParams();
-        layoutParams.setMargins(Utils.dp2px(getContext(), marginInDp), 0, Utils.dp2px(getContext(), marginInDp), 0);
+        layoutParams.setMargins(Utils.dp2px(getContext(), marginInDpLeft), Utils.dp2px(getContext(), marginInDpTop), Utils.dp2px(getContext(), marginInDpRight), Utils.dp2px(getContext(), marginInDpBot));
         iv_icon.setLayoutParams(layoutParams);
     }
 }

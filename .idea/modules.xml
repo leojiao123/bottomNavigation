@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BottomNavigation.iml" filepath="$PROJECT_DIR$/BottomNavigation.iml" />
-      <module fileurl="file://E:\HuiDaiKeProject\HuiDaiKe\bottomNavigation\BottomNavigation.iml" filepath="E:\HuiDaiKeProject\HuiDaiKe\bottomNavigation\BottomNavigation.iml" />
-      <module fileurl="file://F:\githubProjects\BottomNavigation\.idea\bottomNavigation.iml" filepath="F:\githubProjects\BottomNavigation\.idea\bottomNavigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bottomNavigation.iml" filepath="$PROJECT_DIR$/bottomNavigation.iml" />
       <module fileurl="file://$PROJECT_DIR$/bottomnavigation/bottomnavigation.iml" filepath="$PROJECT_DIR$/bottomnavigation/bottomnavigation.iml" />
-      <module fileurl="file://E:/HuiDaiKeProject/HuiDaiKe/bottomNavigation/demo/demo.iml" filepath="E:/HuiDaiKeProject/HuiDaiKe/bottomNavigation/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
     </modules>
   </component>
 </project>

@@ -8,22 +8,25 @@ import android.graphics.drawable.Drawable;
  */
 
 public class BottomNavigationItem {
+    // 闲置状态图标
+    private Drawable mIconInactiveDrawable;
+    // 激活状态图标
+    private Drawable mIconActiveDrawable;
+    // 标题
+    private String mTitle;
+    // 闲置状态图标
+    private int mLabelInActiveColor;
+    // 激活状态图标
+    private int mLabelActiveColor;
+    // 右上角角标图
+    private Drawable mBadgeDrawable;
+    // 对应位置  现有 1,2,3,4,5
+    private String position;
 
-    private Drawable mIconInactiveDrawable; // 闲置状态图标
 
-    private Drawable mIconActiveDrawable;  // 激活状态图标
-
-    private String mTitle; // 标题
-
-    private int mLabelInActiveColor; // 闲置状态图标
-
-    private int mLabelActiveColor;  // 激活状态图标
-
-    private Drawable mBadgeDrawable;  // 右上角角标图
-
-    private String position; // 对应位置  现有 1,2,3,4,5
-
-    private int itemWidth = 25; // 默认给25的宽高
+    // 默认给25的宽高
+    private int itemWidth = 25;
+    private String mBadgeMessage;
 
 
     public Drawable getIconInactiveDrawable() {
@@ -80,6 +83,16 @@ public class BottomNavigationItem {
         return this;
 
     }
+
+    public String getBadgeMessage() {
+        return mBadgeMessage;
+    }
+
+    public BottomNavigationItem setBadgeMessage(String mBadgeMessage) {
+        this.mBadgeMessage = mBadgeMessage;
+        return this;
+    }
+
 
     public String getPosition() {
         return position;
