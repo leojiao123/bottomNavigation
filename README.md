@@ -26,7 +26,7 @@
 #### 2.添加Gradle依赖
 
 	dependencies {
-	        compile 'com.github.leojiao123:bottomNavigation:1.0.2'
+	        compile 'com.github.leojiao123:bottomNavigation:1.0.5'
 	}
 
 #### 3.布局中添加
